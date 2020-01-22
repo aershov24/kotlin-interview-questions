@@ -8,9 +8,6 @@ of the most common and advanced Kotlin Interview Questions every Android develop
 
 > You could also find all the answers here 👉 https://www.fullstack.cafe/Kotlin.
 
-
-Have a look at this list of Github Repo. You could also find all the answers here 👉 https://www.fullstack.cafe/Kotlin.
-
 ### Q1: How to initialize an array in Kotlin with values? ⭐⭐
 
 **Questions Details:**
