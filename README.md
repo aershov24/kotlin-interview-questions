@@ -8,6 +8,9 @@ of the most common and advanced Kotlin Interview Questions every Android develop
 
 > You could also find all the answers here 👉 https://www.fullstack.cafe/Kotlin.
 
+
+Have a look at this list of Github Repo. You could also find all the answers here 👉 https://www.fullstack.cafe/Kotlin.
+
 ### Q1: How to initialize an array in Kotlin with values? ⭐⭐
 
 **Questions Details:**
@@ -21,17 +24,72 @@ In Java an array can be initialized such as:
 How does Kotlin's array initialization look like?
 
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+```kotlin
+val numbers: IntArray = intArrayOf(10, 20, 30, 40, 50)
+```
+
+🔗 **Source:** [stackoverflow.com](https://stackoverflow.com/questions/31366229/how-to-initialize-an-array-in-kotlin-with-values/31366276#31366276)
 
 
 ### Q2: How to correctly concatenate a String in Kotlin? ⭐⭐
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+In Kotlin, you can concatenate 
+1. using string interpolation / templates
+ ```kotlin
+val a = "Hello"
+val b = "World"
+val c = "$a $b"
+ ```
+2. using the + / `plus()` operator
+ ```kotlin
+ val a = "Hello"
+ val b = "World" 
+ val c = a + b   // same as calling operator function a.plus(b)
+ val c = a.plus(b)
+ 
+ print(c)
+ ```
+3. using the `StringBuilder`
+ ```kotlin
+ val a = "Hello"
+ val b = "World"
+ 
+ val sb = StringBuilder()
+ sb.append(a).append(b)
+ val c = sb.toString()
+ 
+ print(c)
+ ```
+
+🔗 **Source:** [stackoverflow.com](https://stackoverflow.com/questions/44188240/kotlin-how-to-correctly-concatenate-a-string)
 
 
 ### Q3: What is basic difference between fold and reduce in Kotlin? When to use which? ⭐⭐
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+* `fold` takes an initial value, and the first invocation of the lambda you pass to it will receive that initial value and the first element of the collection as parameters.
+
+ ```kotlin 
+ listOf(1, 2, 3).fold(0) { sum, element -> sum + element }
+ ```
+ The first call to the lambda will be with parameters `0` and `1`.
+
+ Having the ability to pass in an initial value is useful _if you have to provide some sort of default value or parameter for your operation_.
+
+* `reduce` doesn't take an initial value, but instead starts with the first element of the collection as the accumulator (called `sum` in the following example)
+
+ ```kotlin
+ listOf(1, 2, 3).reduce { sum, element -> sum + element }
+ ```
+
+ The first call to the lambda here will be with parameters `1` and `2`.
+
+🔗 **Source:** [stackoverflow.com](https://stackoverflow.com/questions/44429419/what-is-basic-difference-between-fold-and-reduce-in-kotlin-when-to-use-which)
 
 
 ### Q4: What is the idiomatic way to remove duplicate strings from array? ⭐⭐
@@ -41,32 +99,129 @@ How does Kotlin's array initialization look like?
 How to remove duplicates from an `Array<String?>` in Kotlin?
 
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+Use the `distinct` extension function:
+
+```kotlin
+val a = arrayOf("a", "a", "b", "c", "c")
+val b = a.distinct() // ["a", "b", "c"]
+```
+
+You can also use:
+* `toSet`, `toMutableSet`
+* `toHashSet` - if you don't need the original ordering to be preserved
+
+These functions produce a `Set` instead of a `List` and should be a little bit more efficient than distinct.
+
+🔗 **Source:** [stackoverflow.com](https://stackoverflow.com/questions/40430297/kotlin-idiomatic-way-to-remove-duplicate-strings-from-array)
 
 
 ### Q5: What is the difference between var and val in Kotlin? ⭐⭐
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+* **var** is like `general` variable and it's known as a _mutable_ variable in kotlin and can be assigned multiple times.
+
+* **val** is like `Final` variable and it's known as _immutable_ in Kotlin and can be initialized only single time.
+
+```sh
++----------------+-----------------------------+---------------------------+
+|                |             val             |            var            |
++----------------+-----------------------------+---------------------------+
+| Reference type | Immutable(once initialized  | Mutable(can able to change|
+|                | can't be reassigned)        | value)                    |
++----------------+-----------------------------+---------------------------+
+| Example        | val n = 20                  | var n = 20                |
++----------------+-----------------------------+---------------------------+
+| In Java        | final int n = 20;           | int n = 20;               |
++----------------+-----------------------------+---------------------------+
+```
+
+🔗 **Source:** [stackoverflow.com](https://stackoverflow.com/questions/44200075/val-and-var-in-kotlin)
 
 
 ### Q6: Where should I use var and where val? ⭐⭐
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+Use **var** where value is changing _frequently_. For example while getting location of android device:
+
+```kotlin
+var integerVariable : Int? = null
+```
+
+Use **val** where there is _no change_ in value in whole class. For example you want set textview or button's text programmatically.
+
+```kotlin
+val stringVariables : String = "Button's Constant or final Text"
+```
+
+🔗 **Source:** [stackoverflow.com](https://stackoverflow.com/questions/44200075/val-and-var-in-kotlin)
 
 
 ### Q7: What is a data class in Kotlin? ⭐⭐
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+We frequently create classes whose main purpose is to hold data. In Kotlin, this is called a data class and is marked as `data`:
+
+```kotlin
+data class User(val name: String, val age: Int)
+```
+
+To ensure consistency and meaningful behavior of the generated code, data classes have to fulfill the following requirements:
+
+* The primary constructor needs to have at least one parameter;
+* All primary constructor parameters need to be marked as val or var;
+* Data classes cannot be abstract, open, sealed or inner;
+
+🔗 **Source:** [kotlinlang.org](https://kotlinlang.org/docs/reference/data-classes.html)
 
 
 ### Q8: What is a primary constructor in Kotlin? ⭐⭐
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+The **primary constructor** is part of the class header. Unlike Java, you don't need to declare a constructor in the body of the class. Here's an example:
+
+```kotlin
+class Person(val firstName: String, var age: Int) {
+    // class body
+}
+```
+
+The main idea is by removing the constructor keyword, our code gets simplified and easy to understand.
+
+🔗 **Source:** [www.programiz.com](https://www.programiz.com/kotlin-programming/constructors)
 
 
 ### Q9: How to create singleton in Kotlin? ⭐⭐
 
- See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+**Answer:**
+
+Just use `object`.
+```kotlin
+object SomeSingleton
+```
+The above Kotlin object will be compiled to the following equivalent Java code:
+```java
+public final class SomeSingleton {
+   public static final SomeSingleton INSTANCE;
+
+   private SomeSingleton() {
+      INSTANCE = (SomeSingleton)this;
+      System.out.println("init complete");
+   }
+
+   static {
+      new SomeSingleton();
+   }
+}
+```
+This is the preferred way to implement singletons on a JVM because it enables thread-safe lazy initialization without having to rely on a locking algorithm like the complex double-checked locking.
+
+🔗 **Source:** [medium.com](https://medium.com/@BladeCoder/kotlin-singletons-with-argument-194ef06edd9e)
 
 
 ### Q10: What will be result of the following code execution? ⭐⭐⭐
@@ -507,6 +662,7 @@ public class Foo {
 ### Q68: When to use and do not use an inline function in Kotlin? ⭐⭐⭐⭐⭐
 
  See 👉 **[Answer](https://www.fullstack.cafe/Kotlin)**
+
 
 
 
