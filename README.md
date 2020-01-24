@@ -1,7 +1,5 @@
 # Kotlin Interview Questions and Answers from [FullStack.Cafe](https://www.fullstack.cafe)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
-
 Kotlin is immensely practical. It addresses the problems that developers have, and not some guys in the academia. 
 So, it has type inference, it has amazing type safety, good collection library, and concurrency library to top it. 
 And it's now official - a lot of organisations are migrating their backend applications to Kotlin, 
@@ -9,6 +7,10 @@ and this trend is not likely to end soon. Follow along to check the most complet
 of the most common and advanced Kotlin Interview Questions every Android developer should know in 2020. 
 
 > You could also find all the answers here 👉 https://www.fullstack.cafe/Kotlin.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/13550565/73042643-e53caa80-3e9c-11ea-9019-f70c2158c249.png">
+</p>
 
 ### Q1: How to initialize an array in Kotlin with values? ⭐⭐
 
