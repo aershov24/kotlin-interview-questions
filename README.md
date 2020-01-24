@@ -1,4 +1,6 @@
-# Kotlin Interview Questions and Answers 
+# Kotlin Interview Questions and Answers from [FullStack.Cafe](https://www.fullstack.cafe)
+
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
 
 Kotlin is immensely practical. It addresses the problems that developers have, and not some guys in the academia. 
 So, it has type inference, it has amazing type safety, good collection library, and concurrency library to top it. 
