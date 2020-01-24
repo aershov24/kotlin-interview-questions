@@ -9,7 +9,9 @@ of the most common and advanced Kotlin Interview Questions every Android develop
 > You could also find all the answers here 👉 https://www.fullstack.cafe/Kotlin.
 
 <p align="center">
+  <a href="https://www.fullstack.cafe">
   <img src="https://user-images.githubusercontent.com/13550565/73042643-e53caa80-3e9c-11ea-9019-f70c2158c249.png">
+  </a>
 </p>
 
 ### Q1: How to initialize an array in Kotlin with values? ⭐⭐
